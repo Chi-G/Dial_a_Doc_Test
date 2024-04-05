@@ -1,4 +1,680 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Admin - Login</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" sizes="16x16" href="{{ asset('frontend/images/DaDD.png')}}">
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <!-- end inject -->
+</head>
+<body>
+
+<!-- start cssload-loader -->
+<div class="preloader">
+    <div class="loader">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
+</div>
+<!-- end cssload-loader -->
+
+<!--======================================
+        START HEADER AREA
+    ======================================-->
+<header class="header-menu-area bg-white">
+    <div class="header-top pr-150px pl-150px border-bottom border-bottom-gray py-1">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="header-widget">
+                        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14">
+                            <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-phone mr-1"></i><a href="tel:+2348030496000"> +234 80 304 96000</a></li>
+                            <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-phone mr-1"></i><a href="tel:+254795522525"> +254 795 522525</a></li>
+                            <li class="d-flex align-items-center"><i class="la la-envelope-o mr-1"></i><a href="mailto:#"> contact@sydani.com</a></li>
+                        </ul>
+                    </div><!-- end header-widget -->
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="header-widget d-flex flex-wrap align-items-center justify-content-end">
+                        <div class="theme-picker d-flex align-items-center">
+                            <button class="theme-picker-btn dark-mode-btn" title="Dark mode">
+                                <svg id="moon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </button>
+                            <button class="theme-picker-btn light-mode-btn" title="Light mode">
+                                <svg id="sun" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
+                            <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="{{ route('admin.login') }}"> Login</a></li>
+                            <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="#"> Register</a></li>
+                        </ul>
+                    </div><!-- end header-widget -->
+                </div><!-- end col-lg-6 -->
+            </div><!-- end row -->
+        </div><!-- end container-fluid -->
+    </div><!-- end header-top -->
+    <div class="header-menu-content pr-150px pl-150px bg-white">
+        <div class="container-fluid">
+            <div class="main-menu-content">
+                <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
+                <div class="row align-items-center">
+                    <div class="col-lg-2">
+                        <div class="logo-box">
+                            <a href="index.html" class="logo"><img src="{{ asset('frontend/images/DaDD.png')}}" alt="logo"></a>
+                            <div class="user-btn-action">
+                                <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Search">
+                                    <i class="la la-search"></i>
+                                </div>
+                                <div class="off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Category menu">
+                                    <i class="la la-th-large"></i>
+                                </div>
+                                <div class="off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
+                                    <i class="la la-bars"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end col-lg-2 -->
+                </div><!-- end row -->
+            </div>
+        </div><!-- end container-fluid -->
+    </div><!-- end header-menu-content -->
+    <div class="off-canvas-menu custom-scrollbar-styled main-off-canvas-menu">
+        <div class="off-canvas-menu-close main-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+            <i class="la la-times"></i>
+        </div><!-- end off-canvas-menu-close -->
+        <ul class="generic-list-item off-canvas-menu-list pt-90px">
+            <li>
+                <a href="#">Home</a>
+                <ul class="sub-menu">
+                    <li><a href="index.html">Home One</a></li>
+                    <li><a href="home-2.html">Home Two</a></li>
+                    <li><a href="home-3.html">Home Three</a></li>
+                    <li><a href="home-4.html">Home four</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">courses</a>
+                <ul class="sub-menu">
+                    <li><a href="course-grid.html">course grid</a></li>
+                    <li><a href="course-list.html">course list</a></li>
+                    <li><a href="course-grid-left-sidebar.html">grid left sidebar</a></li>
+                    <li><a href="course-grid-right-sidebar.html">grid right sidebar</a></li>
+                    <li><a href="course-list-left-sidebar.html">list left sidebar <span class="ribbon ribbon-blue-bg">New</span></a></li>
+                    <li><a href="course-list-right-sidebar.html">list right sidebar <span class="ribbon ribbon-blue-bg">New</span></a></li>
+                    <li><a href="course-details.html">course details</a></li>
+                    <li><a href="lesson-details.html">lesson details</a></li>
+                    <li><a href="my-courses.html">My courses</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Student</a>
+                <ul class="sub-menu">
+                    <li><a href="student-detail.html">student detail</a></li>
+                    <li><a href="student-quiz.html">take quiz</a></li>
+                    <li><a href="student-quiz-results.html">quiz results</a></li>
+                    <li><a href="student-quiz-result-details.html">quiz details</a></li>
+                    <li><a href="student-quiz-result-details-2.html">quiz details 2</a></li>
+                    <li><a href="student-path.html">path details</a></li>
+                    <li><a href="student-path-assessment.html">Skill Assessment</a></li>
+                    <li><a href="student-path-assessment-result.html">Skill result</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">pages</a>
+                <ul class="sub-menu">
+                    <li><a href="dashboard.html">dashboard <span class="ribbon">Hot</span></a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="teachers.html">Teachers</a></li>
+                    <li><a href="teacher-detail.html">Teacher detail</a></li>
+                    <li><a href="careers.html">careers</a></li>
+                    <li><a href="career-details.html">career details</a></li>
+                    <li><a href="categories.html">categories</a></li>
+                    <li><a href="terms-and-conditions.html">Terms & conditions</a></li>
+                    <li><a href="privacy-policy.html">privacy policy</a></li>
+                    <li><a href="for-business.html">for business</a></li>
+                    <li><a href="become-a-teacher.html">become an instructor</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="admission.html">admission</a></li>
+                    <li><a href="gallery.html">gallery</a></li>
+                    <li><a href="pricing-table.html">pricing tables</a></li>
+                    <li><a href="contact.html">contact</a></li>
+                    <li><a href="sign-up.html">sign-up</a></li>
+                    <li><a href="login.html">login</a></li>
+                    <li><a href="recover.html">recover</a></li>
+                    <li><a href="shopping-cart.html">cart</a></li>
+                    <li><a href="checkout.html">checkout</a></li>
+                    <li><a href="error.html">page 404</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">blog</a>
+                <ul class="sub-menu">
+                    <li><a href="blog-full-width.html">blog full width </a></li>
+                    <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
+                    <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
+                    <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
+                    <li><a href="blog-single.html">blog detail</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- end off-canvas-menu -->
+    <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
+        <div class="off-canvas-menu-close cat-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+            <i class="la la-times"></i>
+        </div><!-- end off-canvas-menu-close -->
+        <ul class="generic-list-item off-canvas-menu-list pt-90px">
+            <li>
+                <a href="course-grid.html">Development</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Development</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Game Development</a></li>
+                    <li><a href="#">Databases</a></li>
+                    <li><a href="#">Programming Languages</a></li>
+                    <li><a href="#">Software Testing</a></li>
+                    <li><a href="#">Software Engineering</a></li>
+                    <li><a href="#">E-Commerce</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">business</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Business</a></li>
+                    <li><a href="#">Finance</a></li>
+                    <li><a href="#">Entrepreneurship</a></li>
+                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#">Real Estate</a></li>
+                    <li><a href="#">Home Business</a></li>
+                    <li><a href="#">Communications</a></li>
+                    <li><a href="#">Industry</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">IT & Software</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All IT & Software</a></li>
+                    <li><a href="#">IT Certification</a></li>
+                    <li><a href="#">Hardware</a></li>
+                    <li><a href="#">Network & Security</a></li>
+                    <li><a href="#">Operating Systems</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">Finance & Accounting</a>
+                <ul class="sub-menu">
+                    <li><a href="#"> All Finance & Accounting</a></li>
+                    <li><a href="#">Accounting & Bookkeeping</a></li>
+                    <li><a href="#">Cryptocurrency & Blockchain</a></li>
+                    <li><a href="#">Economics</a></li>
+                    <li><a href="#">Investing & Trading</a></li>
+                    <li><a href="#">Other Finance & Economics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">design</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Design</a></li>
+                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Design Tools</a></li>
+                    <li><a href="#">3D & Animation</a></li>
+                    <li><a href="#">User Experience</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">Personal Development</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Personal Development</a></li>
+                    <li><a href="#">Personal Transformation</a></li>
+                    <li><a href="#">Productivity</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Personal Finance</a></li>
+                    <li><a href="#">Career Development</a></li>
+                    <li><a href="#">Parenting & Relationships</a></li>
+                    <li><a href="#">Happiness</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">Marketing</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Marketing</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                    <li><a href="#">Search Engine Optimization</a></li>
+                    <li><a href="#">Social Media Marketing</a></li>
+                    <li><a href="#">Branding</a></li>
+                    <li><a href="#">Video & Mobile Marketing</a></li>
+                    <li><a href="#">Affiliate Marketing</a></li>
+                    <li><a href="#">Growth Hacking</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">Health & Fitness</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Health & Fitness</a></li>
+                    <li><a href="#">Fitness</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Dieting</a></li>
+                    <li><a href="#">Self Defense</a></li>
+                    <li><a href="#">Meditation</a></li>
+                    <li><a href="#">Mental Health</a></li>
+                    <li><a href="#">Yoga</a></li>
+                    <li><a href="#">Dance</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="course-grid.html">Photography</a>
+                <ul class="sub-menu">
+                    <li><a href="#">All Photography</a></li>
+                    <li><a href="#">Digital Photography</a></li>
+                    <li><a href="#">Photography Fundamentals</a></li>
+                    <li><a href="#">Commercial Photography</a></li>
+                    <li><a href="#">Video Design</a></li>
+                    <li><a href="#">Photography Tools</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- end off-canvas-menu -->
+    <div class="mobile-search-form">
+        <div class="d-flex align-items-center">
+            <form method="post" class="flex-grow-1 mr-3">
+                <div class="form-group mb-0">
+                    <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search for anything">
+                    <span class="la la-search search-icon"></span>
+                </div>
+            </form>
+            <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+                <i class="la la-times"></i>
+            </div><!-- end off-canvas-menu-close -->
+        </div>
+    </div><!-- end mobile-search-form -->
+    <div class="body-overlay"></div>
+</header><!-- end header-menu-area -->
+<!--======================================
+        END HEADER AREA
+======================================-->
+
+<!--================================
+         START HERO AREA
+=================================-->
+<section class="hero-area">
+    <div class="hero-slider owl-action-styled">
+        <div class="hero-slider-item hero-bg-1">
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="section-heading">
+                        <h2 class="section__title text-white fs-65 lh-80 pb-3">We Help You Learn <br> What You Love</h2>
+                        <p class="section__desc text-white pb-4">Emply dummy text of the printing and typesetting industry orem Ipsum has been the
+                            <br>industry's standard dummy text ever sinceprinting and typesetting industry.
+                        </p>
+                    </div><!-- end section-heading -->
+                    <div class="hero-btn-box d-flex flex-wrap align-items-center pt-1">
+                        <a href="admission.html" class="btn theme-btn mr-4 mb-4">Join with Us <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn-text video-play-btn mb-4" data-fancybox data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
+                            Watch Preview<i class="la la-play icon-btn ml-2"></i>
+                        </a>
+                    </div><!-- end hero-btn-box -->
+                </div><!-- end hero-content -->
+            </div><!-- end container -->
+        </div><!-- end hero-slider-item -->
+        <div class="hero-slider-item hero-bg-2">
+            <div class="container">
+                <div class="hero-content text-center">
+                    <div class="section-heading">
+                        <h2 class="section__title text-white fs-65 lh-80 pb-3">Join Aduca & Get <br> Your Free Courses!</h2>
+                        <p class="section__desc text-white pb-4">Emply dummy text of the printing and typesetting industry orem Ipsum has been the
+                            <br>industry's standard dummy text ever sinceprinting and typesetting industry.
+                        </p>
+                    </div><!-- end section-heading -->
+                    <div class="hero-btn-box d-flex flex-wrap align-items-center pt-1 justify-content-center">
+                        <a href="admission.html" class="btn theme-btn mr-4 mb-4">Get Started <i class="la la-arrow-right icon ml-1"></i></a>
+                        <a href="#" class="btn-text video-play-btn mb-4" data-fancybox data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
+                            Watch Preview<i class="la la-play icon-btn ml-2"></i>
+                        </a>
+                    </div><!-- end hero-btn-box -->
+                </div><!-- end hero-content -->
+            </div><!-- container -->
+        </div><!-- end hero-slider-item -->
+        <div class="hero-slider-item hero-bg-3">
+            <div class="container">
+                <div class="hero-content text-right">
+                    <div class="section-heading">
+                        <h2 class="section__title text-white fs-65 lh-80 pb-3">Learn Anything, <br> Anytime, Anywhere</h2>
+                        <p class="section__desc text-white pb-4">Emply dummy text of the printing and typesetting industry orem Ipsum has been the
+                            <br>industry's standard dummy text ever sinceprinting and typesetting industry.
+                        </p>
+                    </div>
+                    <div class="hero-btn-box d-flex flex-wrap align-items-center pt-1 justify-content-end">
+                        <a href="#" class="btn-text video-play-btn mr-4 mb-4" data-fancybox data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
+                            <i class="la la-play icon-btn mr-2"></i>Watch Preview
+                        </a>
+                        <a href="admission.html" class="btn theme-btn mb-4"><i class="la la-arrow-left icon mr-1"></i>Get Enrolled </a>
+                    </div><!-- end hero-btn-box -->
+                </div><!-- end hero-content -->
+            </div><!-- container -->
+        </div><!-- end hero-slider-item -->
+    </div><!-- end hero-slide -->
+</section><!-- end hero-area -->
+<!--================================
+        END HERO AREA
+=================================-->
+
+<!--======================================
+        START FEATURE AREA
+ ======================================-->
+<section class="feature-area pb-90px">
+    <div class="container">
+        <div class="row feature-content-wrap">
+            <div class="col-lg-4 responsive-column-half">
+                <div class="info-box">
+                    <div class="info-overlay"></div>
+                    <div class="icon-element mx-auto shadow-sm">
+                        <svg class="svg-icon-color-1" width="41" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 490.667 490.667" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M245.333,85.333c-41.173,0-74.667,33.493-74.667,74.667s33.493,74.667,74.667,74.667S320,201.173,320,160
+                                                C320,118.827,286.507,85.333,245.333,85.333z M245.333,213.333C215.936,213.333,192,189.397,192,160
+                                                c0-29.397,23.936-53.333,53.333-53.333s53.333,23.936,53.333,53.333S274.731,213.333,245.333,213.333z"/>
+                                        </g>
+                                    </g>
+                            <g>
+                                        <g>
+                                            <path d="M394.667,170.667c-29.397,0-53.333,23.936-53.333,53.333s23.936,53.333,53.333,53.333S448,253.397,448,224
+                                                S424.064,170.667,394.667,170.667z M394.667,256c-17.643,0-32-14.357-32-32c0-17.643,14.357-32,32-32s32,14.357,32,32
+                                                C426.667,241.643,412.309,256,394.667,256z"/>
+                                        </g>
+                                    </g>
+                            <g>
+                                        <g>
+                                            <path d="M97.515,170.667c-29.419,0-53.333,23.936-53.333,53.333s23.936,53.333,53.333,53.333s53.333-23.936,53.333-53.333
+                                                S126.933,170.667,97.515,170.667z M97.515,256c-17.643,0-32-14.357-32-32c0-17.643,14.357-32,32-32c17.643,0,32,14.357,32,32
+                                                C129.515,241.643,115.157,256,97.515,256z"/>
+                                        </g>
+                                    </g>
+                            <g>
+                                        <g>
+                                            <path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667S128,400.555,128,394.667
+                                                c0-64.704,52.629-117.333,117.333-117.333s117.333,52.629,117.333,117.333c0,5.888,4.779,10.667,10.667,10.667
+                                                c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"/>
+                                        </g>
+                                    </g>
+                            <g>
+                                        <g>
+                                            <path d="M394.667,298.667c-17.557,0-34.752,4.8-49.728,13.867c-5.013,3.072-6.635,9.621-3.584,14.656
+                                                c3.093,5.035,9.621,6.635,14.656,3.584C367.637,323.712,380.992,320,394.667,320c41.173,0,74.667,33.493,74.667,74.667
+                                                c0,5.888,4.779,10.667,10.667,10.667c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"/>
+                                        </g>
+                                    </g>
+                            <g>
+                                        <g>
+                                            <path d="M145.707,312.512c-14.955-9.045-32.149-13.845-49.707-13.845c-52.928,0-96,43.072-96,96
+                                                c0,5.888,4.779,10.667,10.667,10.667s10.667-4.779,10.667-10.667C21.333,353.493,54.827,320,96,320
+                                                c13.675,0,27.029,3.712,38.635,10.752c5.013,3.051,11.584,1.451,14.656-3.584C152.363,322.133,150.741,315.584,145.707,312.512z"
+                                            />
+                                        </g>
+                                    </g>
+                            </svg>
+                    </div>
+                    <h3 class="info__title">Expert Teachers</h3>
+                    <p class="info__text">Timply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div><!-- end info-box -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-4 responsive-column-half">
+                <div class="info-box">
+                    <div class="info-overlay"></div>
+                    <div class="icon-element mx-auto shadow-sm">
+                        <svg class="svg-icon-color-2" viewBox="0 0 74 74" width="45" xmlns="http://www.w3.org/2000/svg"><path d="m31.841 26.02a1 1 0 0 1 -.52-1.855l2.59-1.57a1 1 0 1 1 1.037 1.71l-2.59 1.57a1 1 0 0 1 -.517.145z"/><path d="m57.42 58.09a.985.985 0 0 1 -.294-.045l-20.09-6.179a1 1 0 0 1 -.546-1.5l26.054-40.382-39.324 38.55a1 1 0 0 1 -1.087.208l-16.76-7.03a1 1 0 0 1 -.131-1.777l11.358-6.871a1 1 0 0 1 1.035 1.711l-9.675 5.853 14.334 6.013 39.106-38.341-20.363 12.316a1 1 0 0 1 -1.037-1.716l27.709-16.747a1 1 0 0 1 .372-.14s0 0 0 0a.986.986 0 0 1 .156-.013 1 1 0 0 1 .609.206l.079.067a1 1 0 0 1 .312.713 1.023 1.023 0 0 1 -.023.227l-10.814 54.073a1 1 0 0 1 -.98.8zm-18.533-7.747 17.769 5.466 9.572-47.844z"/><path d="m23.221 31.23a1 1 0 0 1 -.519-1.856l2.53-1.53a1 1 0 0 1 1.036 1.712l-2.531 1.53a1 1 0 0 1 -.516.144z"/><path d="m28.7 72h-.072a1 1 0 0 1 -.894-.74l-6.178-23.184a1 1 0 1 1 1.931-.515l5.438 20.389 7.488-17.435a1 1 0 1 1 1.838.789l-8.629 20.096a1 1 0 0 1 -.922.6z"/><path d="m28.709 72a1 1 0 0 1 -.736-1.677l16.092-17.515a1 1 0 0 1 1.473 1.354l-16.093 17.515a1 1 0 0 1 -.736.323z"/></svg>
+                    </div>
+                    <h3 class="info__title">Easy Communication</h3>
+                    <p class="info__text">Timply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div><!-- end info-box -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-4 responsive-column-half">
+                <div class="info-box">
+                    <div class="info-overlay"></div>
+                    <div class="icon-element mx-auto shadow-sm">
+                        <svg class="svg-icon-color-3" viewBox="0 0 74 74" width="50" xmlns="http://www.w3.org/2000/svg"><path d="m23.8 23.84a1 1 0 0 1 -.294-1.956l5.96-1.84a1 1 0 0 1 .59 1.912l-5.956 1.844a.981.981 0 0 1 -.3.04z"/><path d="m37 43.84a1.009 1.009 0 0 1 -.37-.071l-34-13.561a1 1 0 0 1 .07-1.883l5.29-1.64a1 1 0 0 1 .592 1.91l-2.592.8 31.01 12.368 25.9-10.325a1.015 1.015 0 0 1 .12-.057l4.98-1.981-31-9.593-2.165.669a1 1 0 1 1 -.59-1.912l2.46-.76a1 1 0 0 1 .59 0l34 10.52a1 1 0 0 1 .075 1.884l-7.49 2.982a.95.95 0 0 1 -.12.058l-26.39 10.521a1.009 1.009 0 0 1 -.37.071z"/><path d="m13.069 27.161a1 1 0 0 1 -.3-1.956l5.951-1.841a1 1 0 1 1 .59 1.911l-5.95 1.841a1.013 1.013 0 0 1 -.291.045z"/><path d="m16.8 47.849a1 1 0 0 1 -1-1v-12.064a1 1 0 1 1 2 0v12.064a1 1 0 0 1 -1 1z"/><path d="m57.188 47.849a1 1 0 0 1 -1-1v-12.064a1 1 0 0 1 2 0v12.064a1 1 0 0 1 -1 1z"/><path d="m37 56.239c-11.884 0-21.193-4.123-21.193-9.386a1 1 0 1 1 2 0c0 3.493 7.882 7.386 19.193 7.386s19.193-3.893 19.193-7.386a1 1 0 1 1 2 0c0 5.263-9.309 9.386-21.193 9.386z"/><path d="m63.393 44.387a1 1 0 0 1 -1-1v-10.2l-25.529-3.5a1 1 0 1 1 .272-1.982l26.393 3.615a1 1 0 0 1 .864.991v11.076a1 1 0 0 1 -1 1z"/><path d="m66.406 49.5h-5.687a1 1 0 0 1 -.978-1.211l.736-3.411a3.156 3.156 0 0 1 6.171 0l.736 3.411a1 1 0 0 1 -.978 1.211zm-4.448-2h3.209l-.474-2.2a1.157 1.157 0 0 0 -2.261 0z"/></svg>
+                    </div>
+                    <h3 class="info__title">Get Certificates</h3>
+                    <p class="info__text">Timply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                </div><!-- end info-box -->
+            </div><!-- end col-lg-3 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end feature-area -->
+
+<section class="footer-area pt-100px">
+    <div class="section-block"></div>
+    <div class="copyright-content py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="copy-desc">&copy; 2024 Sydani. All Rights Reserved. by <a href="https://sydani.org/">Sydani Technologies Ltd</a></p>
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="d-flex flex-wrap align-items-center justify-content-end">
+                        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14">
+                            <li class="mr-3"><a href="#">Terms & Conditions</a></li>
+                            <li class="mr-3"><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div><!-- end col-lg-6 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end copyright-content -->
+</section><!-- end footer-area -->
+<!-- ================================
+          END FOOTER AREA
+================================= -->
+
+<!-- start scroll top -->
+<div id="scroll-top">
+    <i class="la la-arrow-up" title="Go top"></i>
+</div>
+<!-- end scroll top -->
+
+<div class="tooltip_templates">
+    <div id="tooltip_content_1">
+        <div class="card card-item">
+            <div class="card-body">
+                <p class="card-text pb-2">By <a href="teacher-detail.html">Jose Portilla</a></p>
+                <h5 class="card-title pb-1"><a href="course-details.html">The Business Intelligence Analyst Course 2021</a></h5>
+                <div class="d-flex align-items-center pb-1">
+                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
+                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November 2020</span></p>
+                </div>
+                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                    <li>23 total hours</li>
+                    <li>All Levels</li>
+                </ul>
+                <p class="card-text pt-1 fs-14 lh-22">The skills you need to become a BI Analyst - Statistics, Database theory, SQL, Tableau – Everything is included</p>
+                <ul class="generic-list-item fs-14 py-3">
+                    <li><i class="la la-check mr-1 text-black"></i> Become an expert in Statistics, SQL, Tableau, and problem solving</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Boost your resume with in-demand skills</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Gather, organize, analyze and visualize data</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+</div><!-- end tooltip_templates -->
+<div class="tooltip_templates">
+    <div id="tooltip_content_2">
+        <div class="card card-item">
+            <div class="card-body">
+                <p class="card-text pb-2">By <a href="teacher-detail.html">Jose Portilla</a></p>
+                <h5 class="card-title pb-1"><a href="course-details.html">Ultimate Adobe Photoshop Training: From Beginner to Pro</a></h5>
+                <div class="d-flex align-items-center pb-1">
+                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
+                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November 2020</span></p>
+                </div>
+                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                    <li>23 total hours</li>
+                    <li>All Levels</li>
+                </ul>
+                <p class="card-text pt-1 fs-14 lh-22">The skills you need to become a BI Analyst - Statistics, Database theory, SQL, Tableau – Everything is included</p>
+                <ul class="generic-list-item fs-14 py-3">
+                    <li><i class="la la-check mr-1 text-black"></i> Become an expert in Statistics, SQL, Tableau, and problem solving</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Boost your resume with in-demand skills</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Gather, organize, analyze and visualize data</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+</div><!-- end tooltip_templates -->
+<div class="tooltip_templates">
+    <div id="tooltip_content_3">
+        <div class="card card-item">
+            <div class="card-body">
+                <p class="card-text pb-2">By <a href="teacher-detail.html">Jose Portilla</a></p>
+                <h5 class="card-title pb-1"><a href="course-details.html">The Complete WordPress Website Business Course</a></h5>
+                <div class="d-flex align-items-center pb-1">
+                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
+                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November 2020</span></p>
+                </div>
+                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                    <li>23 total hours</li>
+                    <li>All Levels</li>
+                </ul>
+                <p class="card-text pt-1 fs-14 lh-22">The skills you need to become a BI Analyst - Statistics, Database theory, SQL, Tableau – Everything is included</p>
+                <ul class="generic-list-item fs-14 py-3">
+                    <li><i class="la la-check mr-1 text-black"></i> Become an expert in Statistics, SQL, Tableau, and problem solving</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Boost your resume with in-demand skills</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Gather, organize, analyze and visualize data</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+</div><!-- end tooltip_templates -->
+<div class="tooltip_templates">
+    <div id="tooltip_content_4">
+        <div class="card card-item">
+            <div class="card-body">
+                <p class="card-text pb-2">By <a href="teacher-detail.html">Jose Portilla</a></p>
+                <h5 class="card-title pb-1"><a href="course-details.html">The Ultimate Drawing Course - Beginner to Advanced</a></h5>
+                <div class="d-flex align-items-center pb-1">
+                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
+                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November 2020</span></p>
+                </div>
+                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                    <li>23 total hours</li>
+                    <li>All Levels</li>
+                </ul>
+                <p class="card-text pt-1 fs-14 lh-22">The skills you need to become a BI Analyst - Statistics, Database theory, SQL, Tableau – Everything is included</p>
+                <ul class="generic-list-item fs-14 py-3">
+                    <li><i class="la la-check mr-1 text-black"></i> Become an expert in Statistics, SQL, Tableau, and problem solving</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Boost your resume with in-demand skills</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Gather, organize, analyze and visualize data</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+</div><!-- end tooltip_templates -->
+<div class="tooltip_templates">
+    <div id="tooltip_content_5">
+        <div class="card card-item">
+            <div class="card-body">
+                <p class="card-text pb-2">By <a href="teacher-detail.html">Jose Portilla</a></p>
+                <h5 class="card-title pb-1"><a href="course-details.html">The Complete Digital Marketing Course - 12 Courses in 1</a></h5>
+                <div class="d-flex align-items-center pb-1">
+                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
+                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November 2020</span></p>
+                </div>
+                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                    <li>23 total hours</li>
+                    <li>All Levels</li>
+                </ul>
+                <p class="card-text pt-1 fs-14 lh-22">The skills you need to become a BI Analyst - Statistics, Database theory, SQL, Tableau – Everything is included</p>
+                <ul class="generic-list-item fs-14 py-3">
+                    <li><i class="la la-check mr-1 text-black"></i> Become an expert in Statistics, SQL, Tableau, and problem solving</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Boost your resume with in-demand skills</li>
+                    <li><i class="la la-check mr-1 text-black"></i> Gather, organize, analyze and visualize data</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+</div><!-- end tooltip_templates -->
+
+
+<!-- template js files -->
+<script src="{{ asset('frontend/js/jquery-3.4.1.min.js') }} "></script>
+<script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }} "></script>
+<script src="{{ asset('frontend/js/bootstrap-select.min.js') }} "></script>
+<script src="{{ asset('frontend/js/owl.carousel.min.js') }} "></script>
+<script src="{{ asset('frontend/js/isotope.js') }} "></script>
+<script src="{{ asset('frontend/js/waypoint.min.js') }} "></script>
+<script src="{{ asset('frontend/js/jquery.counterup.min.js') }} "></script>
+<script src="{{ asset('frontend/js/fancybox.js') }} "></script>
+<script src="{{ asset('frontend/js/datedropper.min.js') }} "></script>
+<script src="{{ asset('frontend/js/emojionearea.min.js') }} "></script>
+<script src="{{ asset('frontend/js/tooltipster.bundle.min.js') }} "></script>
+<script src="{{ asset('frontend/js/jquery.lazy.min.js') }} "></script>
+<script src="{{ asset('frontend/js/main.js') }} "></script>
+</body>
+</html>
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -137,4 +813,4 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}

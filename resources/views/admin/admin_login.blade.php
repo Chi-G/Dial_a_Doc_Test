@@ -51,7 +51,7 @@
                         <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14">
                             <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-phone mr-1"></i><a href="tel:+2348030496000"> +234 80 304 96000</a></li>
                             <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-phone mr-1"></i><a href="tel:+254795522525"> +254 795 522525</a></li>
-                            <li class="d-flex align-items-center"><i class="la la-envelope-o mr-1"></i><a href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
+                            <li class="d-flex align-items-center"><i class="la la-envelope-o mr-1"></i><a href="mailto:#"> contact@sydani.com</a></li>
                         </ul>
                     </div><!-- end header-widget -->
                 </div><!-- end col-lg-6 -->
@@ -93,18 +93,6 @@
                             <a href="index.html" class="logo"><img src="{{ asset('frontend/images/DaDD.png')}}" alt="logo"></a>
                         </div>
                     </div><!-- end col-lg-2 -->
-                    <div class="col-lg-10">
-                        <div class="menu-wrapper">
-                                                       
-                           
-                            
-                            <div class="nav-right-button">
-                                <a href="admission.html" class="btn theme-btn d-none d-lg-inline-block"><i class="la la-user-plus mr-1"></i> Login</a>
-                                
-                                <a href="admission.html" class="btn theme-btn d-none d-lg-inline-block"><i class="la la-user-plus mr-1"></i> Register</a>
-                            </div><!-- end nav-right-button -->
-                        </div><!-- end menu-wrapper -->
-                    </div><!-- end col-lg-10 -->
                 </div><!-- end row -->
             </div>
         </div><!-- end container-fluid -->
@@ -160,7 +148,7 @@
                     <li><a href="careers.html">careers</a></li>
                     <li><a href="career-details.html">career details</a></li>
                     <li><a href="categories.html">categories</a></li>
-                    <li><a href="terms-and-conditions.html">Terms & conditions</a></li>
+                    <li><a href="#">Terms & conditions</a></li>
                     <li><a href="privacy-policy.html">privacy policy</a></li>
                     <li><a href="for-business.html">for business</a></li>
                     <li><a href="become-a-teacher.html">become an instructor</a></li>
@@ -412,14 +400,14 @@
                         <a href="index.html" class="pr-4">
                             <img src="{{ asset('frontend/images/DaDD.png')}}" alt="footer logo" class="footer__logo">
                         </a>
-                        <p class="copy-desc">Copyright &copy; 2021 <a href="https://sydani.org/">Sydani Technologies Ltd</a>.</p>
+                        <p class="copy-desc">Copyright &copy; 2024 <a href="https://sydani.org/">Sydani Technologies Ltd</a>.</p>
                     </div>
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="d-flex flex-wrap align-items-center justify-content-end">
                         <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14">
-                            <li class="mr-3"><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                            <li class="mr-3"><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li class="mr-3"><a href="#">Terms & Conditions</a></li>
+                            <li class="mr-3"><a href="#">Privacy Policy</a></li>
                         </ul>
                         <div class="select-container select-container-sm">
                             <select class="select-container-select">
