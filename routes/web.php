@@ -34,12 +34,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-//Admin Group Middleware
+// Checks for Admin Group Middleware & if user == admin role
 Route::middleware(['auth', 'roles:admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 });
 
-//Instructor Group Middleware
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+
+//checks for Instructor Group Middleware & if user == instructor role
 Route::middleware(['auth', 'roles:instructor'])->group(function() {
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
 });

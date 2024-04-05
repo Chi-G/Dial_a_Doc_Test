@@ -18,7 +18,7 @@
                         </a>
                         <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
                             <li class="active">
-                                <a href="index.html"> Overview </a>
+                                <a href="{{ route('admin.dashboard')}}"> Overview </a>
                             </li>
                             <li class="active">
                                 <a href="index.html"> Subscription Plans </a>
