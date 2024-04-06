@@ -1,6 +1,4 @@
 
-
-
 <div class="sidebar-wrapper sidebar-theme">
             
             <nav id="sidebar">
